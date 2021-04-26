@@ -45,11 +45,8 @@ training <- AGE[indxTrain,]
 testing <- AGE[-indxTrain,] #Check dimensions of the split > prop.table(table(AGE$age_cat)) * 100
 testing <- AGE[-indxTrain,] #Check dimensions of the split > prop.table(table(AGE$age_cat)) * 100
 prop.table(table(testing$age_cat)) * 100
-old    young 
-32.12461 67.87539 
 prop.table(table(training$age_cat)) * 100
-old    young 
-32.13403 67.86597
+
 x = training[,-9]
 y = training$age_cat
 library(e1071)
@@ -59,28 +56,5 @@ Predict <- predict(model,newdata = testing )
 confusionMatrix(Predict, testing$age_cat)
 Confusion Matrix and Statistics
 
-Reference
-Prediction  old young
-old      7     2
-young 1942  4116
-
-Accuracy : 0.6796          
-95% CI : (0.6677, 0.6913)
-No Information Rate : 0.6788          
-P-Value [Acc > NIR] : 0.4514          
-
-Kappa : 0.0042          
-
-Mcnemar's Test P-Value : <2e-16          
-                                          
-            Sensitivity : 0.003592        
-            Specificity : 0.999514        
-         Pos Pred Value : 0.777778        
-         Neg Pred Value : 0.679432        
-             Prevalence : 0.321246        
-         Detection Rate : 0.001154        
-   Detection Prevalence : 0.001483        
-      Balanced Accuracy : 0.501553        
-                                          
-       'Positive' Class : old   
+          
 
